@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">TEAM1</th>
+            <th scope="col">B1</th>
+            <th scope="col">B2</th>
+            <th scope="col">B3</th>
+            <th scope="col">B4</th>
+            <th scope="col">B5</th>
+            <th scope="col">B6</th>
+            <th scope="col">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of teamData; let i = index">
+            <th scope="row">{{data.name}}</th>
+            <td *ngFor="let ball of [0,0,0,0,0,0]; let j = index">{{data.score[j]}}</td>
+            <td>{{data.total}}</td>
+        </tr>
+    </tbody>
+</table>

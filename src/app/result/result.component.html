@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 mt-5">
+            <h4 class="text-center">CRICKET 10</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center">
+            <label>TEAM 1 SCORE</label>
+            <label *ngIf="generateResult">{{team1Score}}</label>
+            <button class="btn btn-primary btn-sm" [disabled]="team1TimeOut" (click)="Hit('TEAM 1')">HIT 1</button>
+        </div>
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+            <label>TIMER</label>
+            <label>{{seconds}}</label>
+        </div>
+        <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center">
+            <label>TEAM 2 SCORE</label>
+            <label *ngIf="generateResult">{{team2Score}}</label>
+            <button class="btn btn-primary btn-sm" [disabled]="team2TimeOut" (click)="Hit('TEAM 2')">HIT 2</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center mt-3">
+            <label>TEAM 1 SCORE BOARD</label>
+            <app-score-board [teamData]="team1Data"></app-score-board>
+        </div>
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+            <button class="btn btn-primary btn-sm" [disabled]="enableResult ? true : false" (click)="GetResult()">GENERATE RESULT</button>
+            <label class="mt-5">MATCH WON BY</label>
+            <label *ngIf="generateResult">{{team1Score > team2Score ? "TEAM 1" : "TEAM 2"}}</label>
+            <label class="mt-3">MATCH OF THE MATCH</label>
+            <label *ngIf="generateResult" class="mt-3" id="manOfTheMatch">{{manOfTheMatch.name}}</label>
+            <label *ngIf="generateResult">{{manOfTheMatch.team}}</label>
+            <label *ngIf="generateResult">SCORE {{manOfTheMatch.score}}</label>
+        </div>
+        <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center mt-3">
+            <label>TEAM 2 SCORE BOARD</label>
+            <app-score-board [teamData]="team2Data"></app-score-board>
+        </div>
+    </div>
+</div>
